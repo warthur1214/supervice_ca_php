@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Index:meta" />
+    <include file="Index:css" />
+    <link rel="stylesheet" href="/Public/css/style/style.css">
+
+    <link rel="stylesheet" href="/Public/plugins/datatables/dataTables.bootstrap.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/Public/plugins/daterangepicker/daterangepicker-bs3.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<section class="content-header">
+    <h1 class="text-left">
+        积分信息
+    </h1>
+</section>
+<div class="box">
+    <form class="form-horizontal paddingTB10 selectForm" id="submit_form" style="overflow: visible;">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">筛选</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="11"  placeholder="手机号" name="tel" />
+            </div>
+            <label class="col-sm-1 control-label">积分变化</label>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar-times-o"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" readonly style="background: transparent" id="active_time" name="change_day" placeholder="变化时间区间">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" style="padding: 6px;"  name="change_type">
+                    <option value="">不限</option>
+                    <option value="+">增长</option>
+                    <option value="-">减少</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" name="change_no">
+                    <option value="">不限</option>
+                    <option value="0-99">0-99</option>
+                    <option value="100-299">100-299</option>
+                    <option value="300-499">300-499</option>
+                    <option value="500-999">500-999</option>
+                    <option value="1000-2999">1000-2999</option>
+                    <option value="3000以上">3000以上</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">积分数量</label>
+            <div class="col-sm-2">
+                <input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" class="form-control" name="s_no" />
+            </div>
+            <div style="text-align: center" class="col-sm-1 control-label">至</div>
+            <div class="col-sm-2">
+                <input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" class="form-control" name="e_no" />
+            </div>
+            <div class="col-sm-2">
+                <div class="text-center">
+                    <span id="searchBtn" class="btn btn-sm btn-info"><i class="fa fa-search"></i> 查询</span>
+                </div>
+            </div>
+    </div>
+    </form>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table id="list" class="table table-bordered">
+        </table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix page">
+    </div>
+</div>
+
+<!-- /.box -->
+<include file="Index:js" />
+<!-- DataTables -->
+<script src="/Public/js/public/dataTableCusV2.js"></script>
+<script src="/Public/plugins/daterangepicker/moment.js"></script>
+<script src="/Public/plugins/daterangepicker/daterangepicker-dob.js"></script>
+<script src="/Public/js/integral/integralList.js"></script>
+<script>
+    $('#active_time').daterangepicker();
+    $('.fa-calendar-times-o').click(function() {
+        $('#active_time').val('');
+    });
+</script>
+</body>
+</html>

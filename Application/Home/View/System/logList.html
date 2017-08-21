@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Index:meta" />
+    <include file="Index:css" />
+    <link rel="stylesheet" href="/Public/css/style/style.css">
+
+    <link rel="stylesheet" href="/Public/plugins/datatables/dataTables.bootstrap.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/Public/plugins/daterangepicker/daterangepicker-bs3.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<section class="content-header">
+    <h1 class="text-left">
+        系统日志
+    </h1>
+</section>
+<div class="box">
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table id="list" class="table table-bordered">
+        </table>
+    </div>
+    <!-- /.box-body -->
+    <!--<div class="box-footer clearfix page">
+    </div>-->
+</div>
+
+<!-- /.box -->
+<include file="Index:js" />
+<script src="/Public/js/public/dataTableCusV2.js"></script>
+<script src="/Public/plugins/daterangepicker/moment.js"></script>
+<script src="/Public/plugins/daterangepicker/daterangepicker-dob.js"></script>
+<script>
+    $(function(){
+
+        mytable = InitDataTable({
+            $el: $('#list'), //表格dom选择器
+            url: '/Home/System/logListAjax', //表格列表数据
+            ajaxdata: {},
+            scrollX: true, //是否显示横向滚动条
+            tableOpts: {
+                data: {//初始化表格的时候，指定列的排序规则,不需要显示的列定义visible： false "aaSorting": asc | desc,orderable: true,"aaSorting": "desc"
+                    "log": { title: "操作"},
+                    "create_time": { title: "操作时间"},
+                    "display_name": { title: "操作用户"}
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

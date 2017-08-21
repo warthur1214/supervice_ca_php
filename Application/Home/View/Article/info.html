@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><{$info['article_title']}></title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <include file="Index:css" />
+    <style type="text/css">
+    .text-author-date{ padding-top: 10px; }
+    .page-content img{ width: 100%;}
+    </style>
+</head>
+
+<body>
+    <h2 class="page-header text-center">
+        <{$info['article_title']}>
+        <div class="clearfix text-author-date">
+            <small class="pull-left">作者: <{$info['article_author']}></small>
+            <small class="pull-right">日期: <{$info['edit_time']}></small>
+        </div>
+    </h2>
+    <div class="page-content">
+        <{$info['article_content']}>
+    </div>
+</body> 
+</html>

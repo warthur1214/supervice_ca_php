@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Index:meta" />
+    <include file="Index:css" />
+    <link rel="stylesheet" href="/Public/css/style/style.css">
+
+    <link rel="stylesheet" href="/Public/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="/Public/plugins/jqueryui-bootstrap/css/jquery-ui-1.10.0.custom.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/Public/plugins/daterangepicker/daterangepicker-bs3.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<section class="content-header">
+    <h1 class="text-left">
+        用户信息
+    </h1>
+</section>
+<div class="box">
+    <form class="form-horizontal paddingTB10 selectForm" id="submit_form" style="overflow: visible;">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">筛选</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="11"  placeholder="手机号" name="tel" id="phoneNo" />
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="车架号" name="v_code" id="carNo" />
+            </div>
+
+            <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="经销商ID" name="sale_id" id="distributorID" />
+            </div>
+
+            <label class="col-sm-1 control-label">车系车型</label>
+            <div class="col-sm-2">
+                <select class="form-control" id="car_band" name="car_band">
+                    <option value="">全部</option>
+                    <volist name="brand" id="val">
+                    <option value="<{$val['car_brand_id']}>"><{$val['car_brand']}></option>
+                    </volist>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" id="city_id" name="car_serious">
+                    <option value="">全部</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">车辆信息完整度</label>
+            <div class="checkbox col-sm-4">
+                <label>
+                    <input type="hidden" name="is_carNo">
+                    <input class="checkMany" type="checkbox" />
+                    车牌号
+                </label>
+                <label>
+                    <input type="hidden" name="is_owner">
+                    <input class="checkMany" type="checkbox" />
+                    车主姓名
+                </label>
+                <label>
+                    <input type="hidden" name="is_eCode">
+                    <input class="checkMany" type="checkbox" />
+                    发动机号
+                </label>
+                <label>
+                    <input type="hidden" name="is_device">
+                    <input class="checkMany" type="checkbox" />
+                    有硬件
+                </label>
+            </div>
+            <label class="col-sm-2 control-label">注册时间区间</label>
+
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar-times-o"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" readonly style="background: transparent" id="active_time" name="create_time" placeholder="注册时间区间">
+                </div>
+            </div>
+            <div class="col-sm-1 text-center">
+                <button type="button" id="searchBtn" class="btn btn-sm btn-info"><i class="fa fa-search"></i> 查询</button>
+            </div>
+        </div>
+    </form>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table id="list" class="table table-bordered table-hover">
+        </table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix page">
+    </div>
+</div>
+
+<!-- /.box -->
+<include file="Index:js" />
+<include file="Index:autoComplete" />
+<!-- DataTables --> 
+<script src="/Public/js/public/dataTableCusV2.js"></script>
+<!--
+<script src="/Public/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/Public/plugins/datatables/dataTables.bootstrap.min.js"></script>-->
+<script src="/Public/plugins/daterangepicker/moment.js"></script>
+<script src="/Public/plugins/daterangepicker/daterangepicker-dob.js"></script>
+<script src="/Public/js/user/userList.js"></script>
+<script>
+    $('#active_time').daterangepicker();
+    $('.fa-calendar-times-o').click(function() {
+        $('#active_time').val('');
+    });
+</script>
+</body>
+</html>

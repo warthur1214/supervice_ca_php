@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Index:meta" />
+    <include file="Index:css" /> 
+</head>
+
+<body>
+    <section class="content-header">
+        <span class="pull-right">
+            <a href="/Home/set/addSet" class="btn btn-sm btn-info"> <i class="fa fa-plus"></i> 添加新套餐</a>
+        </span>
+        <h1>
+            套餐管理
+        </h1>
+    </section>
+    <div class="box marginB0">
+        <!-- <form class="form-horizontal padding10" role="form" id="submit_form">
+            <div class="input-group col-sm-3">
+                <input type="text" class="form-control" id="searchInput" placeholder="搜索banner">
+                <span class="input-group-btn">
+                    <button type="button" id="searchBtn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+        </form> -->
+        <div class="box-body with-borderT">
+            <table id="list" class="table table-bordered table-hover" style="width: 100%"> 
+            </table>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix page">
+        </div>
+    </div>
+    <!-- /.box -->
+    <include file="Index:js" />
+    <include file="Index:datatable" />
+    <script type="text/javascript" src="/Public/js/set/setList.js"></script> 
+</body>
+
+</html>

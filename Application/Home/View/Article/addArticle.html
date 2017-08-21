@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Index:meta" />
+    <include file="Index:css" />
+    <script type="text/javascript" charset="utf-8" src="/Public/plugins/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Public/plugins/ueditor/ueditor.all.js"></script>
+    <style type="text/css">
+    .alert_page_success {
+        color: #468847;
+        background-color: #dff0d8;
+        border-color: #d6e9c6
+    }
+    
+    .alert_page_error {
+        color: #b94a48;
+        background-color: #f2dede;
+        border-color: #eed3d7
+    } 
+    </style>
+</head>
+
+<body>
+    <section class="content-header">
+        <h1>
+        添加文章
+      </h1>
+    </section>
+    <div class="box box-cus box-cus-form">
+        <div class="alert alert-error" style="display:none;">
+            <span>信息不能为空，请输入</span>
+        </div>
+        <div class="box-body">
+            <form role="form" id="info_form">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="title" colspan="4"><i class="fa fa-info-circle"></i> 基本信息</td>
+                        </tr>
+                        <tr>
+                            <th>文章标题</th>
+                            <td colspan="3">
+                                <input class="form-control" type="text" name="article_title" required="true" placeholder="请在这里输入标题">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>作者</th>
+                            <td>
+                                <input class="form-control" type="text" name="article_author" required="true" placeholder="请输入作者">
+                            </td>
+                            <th>文章类型</th>
+                            <td>
+                                <input class="form-control" type="text" name="article_type" placeholder="请输入文章类型">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>文章描述</th>
+                            <td colspan="3">
+                                <textarea name="article_depict" class="form-control" placeholder="请输入文章描述"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>正文</th>
+                            <td colspan="3">
+                                <script type="text/plain" id="myEditor">
+                                    <p>这里我可以写一些输入提示</p>
+                                </script>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </form>
+        </div>
+        <div class="box-footer clearfix text-center">
+            <button type="submit" class="btn btn-primary" id="submit"><i class="fa fa-save"></i> 提交</button>
+            <button type="button" class="btn btn-info" id="btnView"><i class="fa fa-eye"></i> 预览</button>
+            <a href="/Home/Article/articleList" class="btn btn-default"><i class="fa fa-arrow-left"></i> 返回</a>
+        </div>
+    </div>
+    <!-- /.box --> 
+    <include file="Index:js" /> 
+    <include file="Index:validate" /> 
+    <script type="text/javascript" src="/Public/js/article/initMobiView.js"></script> 
+    <script type="text/javascript" src="/Public/js/article/addArticle.js"></script> 
+</body>
+
+</html>

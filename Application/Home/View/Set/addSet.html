@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Index:meta" />
+    <include file="Index:css" />
+    <style type="text/css">
+    .alert_page_success {
+        color: #468847;
+        background-color: #dff0d8;
+        border-color: #d6e9c6
+    }
+    
+    .alert_page_error {
+        color: #b94a48;
+        background-color: #f2dede;
+        border-color: #eed3d7
+    }
+    
+    .box-cus .text-remark-td .text-red {
+        bottom: 0;
+    }
+    
+    .text-rule {
+        padding-left: 160px;
+        text-align: left;
+    }
+    .box-cus .limited-box > .form-control{
+        width: 25%;
+        display: inline-block; 
+    }
+    .limited-form-control{
+        width: 25%;
+        display: inline-block;
+        position: relative;
+    }
+    .limited-form-control .fa{
+        position: absolute;
+        top: 7px;
+        left: 7px;
+    }
+    .box-cus .limited-form-control .form-control[readonly]{
+        width: 100%; 
+        display: inline-block; 
+        padding-left: 25px;
+        background-color: transparent;
+    }
+    .box-cus .limited-form-control .form-control[disabled]{
+        background-color: #eee;
+    }
+    </style>
+</head>
+
+<body>
+    <section class="content-header">
+        <h1>
+        添加套餐
+      </h1>
+    </section>
+    <div class="box box-cus box-cus-form">
+        <div class="alert alert-error" style="display:none;">
+            <span>信息不能为空，请输入</span>
+        </div>
+        <div class="box-body">
+            <form role="form" id="info_form">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="title" colspan="4"><i class="fa fa-info-circle"></i> 基本信息</td>
+                        </tr>
+                        <tr>
+                            <th>图片设置</th>
+                            <td colspan="5" class="banner-upload-td">
+                                <button type="button" class="btn btn-warning" id="pictureUrl">
+                                    <i class="fa fa-upload"></i> 上传图片
+                                </button>(图片尺寸 宽440*高440)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>套餐名称</th>
+                            <td colspan="2">
+                                <input type="text" name="set_name" class="form-control" required="true">
+                            </td>
+                            <th>对应联通套餐</th>
+                            <td colspan="2" class="text-remark-td">
+                                <select name="unicom_set_id" class="form-control" required="true"> 
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>原价(元)</th>
+                            <td colspan="2" class="text-remark-td">
+                                <input type="number" name="market_price" class="form-control" required="true">
+                                <span>注：此为在流量商城中展示的原价</span>
+                            </td>
+                            <th>现价(元)</th>
+                            <td colspan="2" class="text-remark-td">
+                                <input type="number" name="current_price" class="form-control" required="true">
+                                <span>注：此为在流量商城中展示的现价，并且为用户可兑换的最低价格。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>可兑换积分</th>
+                            <td colspan="2" class="text-remark-td">
+                                <input type="number" name="exchange_integral" class="form-control" required="true">
+                                <span>注：此为在流量商城中展示的积分，且为积分的兑换上限。</span>
+                            </td>
+                            <th>限时优惠</th>
+                            <td colspan="2">
+                                <label class="icheck-label">
+                                    <input type="checkbox" id="limitedCheck" name="limited_time_discount"> 点击开启
+                                </label>
+                                <div id="limitedBox" class="limited-box">
+                                    优惠价
+                                    <input type="number" name="discount_price" class="form-control" disabled> 优惠时间
+                                    <span class="limited-form-control">
+                                        <i class="fa fa-calendar-times-o"></i>
+                                        <input type="text" name="discount_start_time" class="form-control" id="beginTime" readonly="readonly" disabled>
+                                    </span>
+                                    <span class="limited-form-control">
+                                        <i class="fa fa-calendar-times-o"></i>
+                                        <input type="text" name="discount_end_time" class="form-control" id="endTime" readonly="readonly" disabled>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>积分说明</th>
+                            <td colspan="2">
+                                <textarea class="form-control" name="integral_explain" required="true" placeholder="请输入活动描述"></textarea>
+                            </td>
+                            <th>积分详情</th>
+                            <td colspan="2">
+                                <textarea name="set_detail" class="form-control" required="true" placeholder="请输入活动描述"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="box-footer clearfix text-center">
+            <p class="text-rule">
+                积分规则： 1.积分/元兑换比例=可兑换积分/（原价-现价）。
+                <br>2.抵扣金额=现有积分/（积分/元兑换比例）。抵扣金额精确至小数点后两位，如20.1375，则 取20.13元。
+            </p>
+            <button type="submit" class="btn btn-info" id="submit"><i class="fa fa-save"></i> 添加此套餐</button>
+            <a href="/Home/Banner/bannerList" class="btn btn-default"><i class="fa fa-arrow-left"></i> 返回</a>
+        </div>
+    </div>
+    <!-- /.box -->
+    <include file="Index:js" />
+    <include file="Index:timepicker" />
+    <include file="Index:validate" />
+    <include file="Index:plupload" />
+    <script type="text/javascript" src="/Public/js/set/addSet.js"></script>
+</body>
+
+</html>

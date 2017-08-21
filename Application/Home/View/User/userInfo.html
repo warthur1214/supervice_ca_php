@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Index:meta" />
+    <include file="Index:css" />
+    <link rel="stylesheet" href="/Public/css/style/style.css">
+
+    <link rel="stylesheet" href="/Public/plugins/datatables/dataTables.bootstrap.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/Public/plugins/daterangepicker/daterangepicker-bs3.css">
+    <style>
+    .row{ padding: 10px 15px; }
+    .widget-user-2 .widget-user-header{ padding: 5px; }
+    .widget-user-2 .widget-user-username{ font-size: 20px; margin-left: 40px;}
+    .widget-user-2 .widget-user-image>img{ width: 32px; }
+    </style>
+</head>
+<body>
+<section class="content-header">
+    <h1 class="text-left">
+        用户信息
+    </h1>
+</section>
+<div class="row">
+    <div class="col-md-6">
+        <!-- Widget: user widget style 1 -->
+        <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-yellow">
+                <div class="widget-user-image">
+                    <img id="imgPic" class="img-circle" src="" alt="User Avatar">
+                </div> 
+                <!-- /.widget-user-image -->
+                <h3 id="userName" class="widget-user-username"></h3>
+
+            </div>
+            <div class="box-footer no-padding">
+                <ul class="nav nav-stacked" id="accountMsg">
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.widget-user -->
+    </div>
+    <div class="col-md-6">
+        <!-- Widget: user widget style 1 -->
+        <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua">
+                <div class="widget-user-image">
+                    <!--<img class="img-circle" src="http://7xrrpc.com2.z0.glb.qiniucdn.com/risk3_20161125132928" alt="User Avatar">-->
+                </div>
+                <!-- /.widget-user-image -->
+                <h3 class="widget-user-username">硬件信息</h3>
+                <!--<h5 class="widget-user-desc">Lead Developer</h5>-->
+            </div>
+            <div class="box-footer no-padding">
+                <ul class="nav nav-stacked" id="deviceMsg">
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.widget-user -->
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <!-- Widget: user widget style 1 -->
+        <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-green">
+                <div class="widget-user-image">
+                    <!--<img class="img-circle" src="http://7xrrpc.com2.z0.glb.qiniucdn.com/risk3_20161125132928" alt="User Avatar">-->
+                </div>
+                <!-- /.widget-user-image -->
+                <h3 class="widget-user-username">车辆信息</h3>
+                <!--<h5 class="widget-user-desc">Lead Developer</h5>-->
+            </div>
+            <div class="box-footer no-padding">
+                <ul class="nav nav-stacked" id="carMsg">
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.widget-user -->
+    </div>
+    <div class="col-md-6">
+        <!-- Widget: user widget style 1 -->
+        <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-red">
+                <div class="widget-user-image">
+                    <!--<img class="img-circle" src="http://7xrrpc.com2.z0.glb.qiniucdn.com/risk3_20161125132928" alt="User Avatar">-->
+                </div>
+                <!-- /.widget-user-image -->
+                <h3 class="widget-user-username">sim卡信息</h3>
+                <!--<h5 class="widget-user-desc">Lead Developer</h5>-->
+            </div>
+            <div class="box-footer no-padding">
+                <ul class="nav nav-stacked" id="simMsg">
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.widget-user -->
+    </div>
+</div>
+
+
+
+
+<!-- /.box -->
+<include file="Index:js" />
+<!-- DataTables -->
+<include file="Index:datatable" /><!--
+<script src="/Public/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/Public/plugins/datatables/dataTables.bootstrap.min.js"></script>-->
+<script src="/Public/plugins/daterangepicker/moment.js"></script>
+<script src="/Public/plugins/daterangepicker/daterangepicker-dob.js"></script>
+<script src="/Public/js/user/userInfo.js"></script> 
+</body>
+</html>

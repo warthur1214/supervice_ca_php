@@ -1,0 +1,143 @@
+<style type="text/css">
+    .autolist-box{
+        position: absolute;
+        width: 100%;
+        max-height: 200px;
+        overflow: auto;
+        background-color: #fff;
+        z-index: 1;
+        border: 1px solid #d2d6de;
+    }
+    .autolist-box ul{
+        padding: 0;
+        margin: 0;
+    }
+    .autolist-box li{
+        list-style: none;
+        padding: 3px 10px;
+        margin: 0;
+    }
+    .autolist-box li:hover,
+    .autolist-box li.active{
+        background-color: #eaeaea;
+    }
+</style>
+<script>
+    function InitAutoComplete(opts) {
+        var _defaults = {
+            $el: '',
+            url: '',
+            text: '',
+            key: ''
+        };
+        var _opts = $.extend({}, _defaults, opts);
+        var _InitAutoComplete = {
+            _init: function(opts) {
+                var me = this;
+                for (var i in opts) {
+                    me[i] = opts[i];
+                };
+                me.$el.parents('.form-group').addClass('autocomplete-box');
+                me.$el.before('<i role="autocompleteIcon" class="fa fa-caret-down"></i>');
+                me.$el.after('<div class="autolist-box hide" role="list"></div>');
+                me.load();
+                me.bindEvent();
+            },
+            load: function(param) {
+                var me = this;
+                var _newurl = me.url;
+
+                if (param && param != "") {
+                    _newurl = (_newurl + '?id=' + param);
+                };
+
+                AjaxJson(_newurl, function(res) {
+                    me.renderSelectList(res);
+                });
+
+            },
+            renderSelectList: function(data) {
+                var me = this;
+                var $list = me.$el.siblings('[role="list"]');
+                var _html = '';
+                var _text = me.text;
+                var _val = me.val;
+                var _default = me.$el.val();
+
+                if (data && data.length > 0) {
+
+                    for (var i = 0, l = data.length; i < l; i++) {
+
+                        var _d = data[i];
+
+                        if (_default == _d[_text]) {
+                            _html += '<li class="active" data-val="' + _d[_val] + '">' + _d[_text] + '</li>';
+                        } else {
+                            _html += '<li data-val="' + _d[_val] + '">' + _d[_text] + '</li>';
+                        };
+
+                    };
+                    _html = ('<ul>' + _html + '</ul>');
+                } else {
+                    _html = '<p style="padding: 10px; margin: 0;">没有检索到结果,请自行填写！</p>';
+                };
+                $list.html(_html);
+            },
+            bindEvent: function() {
+                var me = this;
+                var $icon = me.$el.siblings('[role="autocompleteIcon"]');
+                var $list = me.$el.siblings('[role="list"]');
+
+                $icon.bind('click', function(e) {
+                    $('.autolist-box').addClass('hide');
+                    me.showListBox();
+                    e.stopPropagation();
+                });
+                me.$el.bind('keyup', function(e) {
+                    me.onKeyup(e);
+                });
+                $list.on('click', 'li', function(e) {
+                    var $this = $(this);
+                    var _val = $this.text();
+
+                    $this.siblings('.active').removeClass('active');
+                    $this.addClass('active');
+
+                    me.$el.val(_val);
+                    me.onSelected($this);
+                });
+                $(document).bind('click', function() {
+                    me.hideListBox();
+                });
+            },
+            onSelected: function($el) {
+
+            },
+            onKeyup: function(e) {
+                var me = this;
+                me.$el.unbind('keyup');
+
+                setTimeout(function() {
+                    var _val = me.$el.val();
+
+                    me.load(_val);
+                    me.showListBox();
+                    me.$el.bind('keyup', function(e) {
+                        me.onKeyup(e);
+                    });
+                }, 800);
+            },
+            showListBox: function() {
+                this.$el.siblings('[role="list"]').removeClass('hide');
+            },
+            hideListBox: function() {
+                this.$el.siblings('[role="list"]').addClass('hide');
+            },
+            setUrl: function(url) {
+                this.url = url;
+            }
+        };
+        _InitAutoComplete._init(_opts);
+        return _InitAutoComplete;
+    };
+</script>
