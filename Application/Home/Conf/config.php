@@ -9,7 +9,7 @@ return array(
     'DEFAULT_CONTROLLER'    =>  'Login', // 默认控制器名称
     /* 数据库设置 */
     'DB_TYPE'               =>  'mysql',     // 数据库类型
-    'DB_HOST'               =>  '182.106.128.168', // 服务器地址
+    'DB_HOST'               =>  '182.106.128.167', // 服务器地址
     'DB_PORT'               =>  '12768',        // 端口
     'DB_NAME'               =>  'auth',  // 数据库名
     'DB_PREFIX'             =>  'tp_',    //表前缀
